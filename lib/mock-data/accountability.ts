@@ -1,0 +1,65 @@
+import type { RecoveryPlan, AccountabilityEvent } from '@/types/accountability'
+
+export const mockRecoveryPlans: RecoveryPlan[] = [
+  {
+    id: 'plan-northstar-traffic-recovery',
+    kpiId: 'kpi-ns-website-visits',
+    ownerId: 'user-growth',
+    ownerName: 'Casey Brooks',
+    createdAt: '2026-08-05T09:00:00Z',
+    updatedAt: '2026-08-20T09:30:00Z',
+    status: 'in-progress',
+    approvedById: 'user-ceo',
+    approvedAt: '2026-08-05T14:00:00Z',
+    summary: 'Recover August traffic by shifting budget to the highest-converting paid search and affiliate sources while protecting approval quality.',
+    rootCause: 'Early-August paid traffic softened and approval rates declined for selected bank partners, reducing eligible leads and approved applications.',
+    actions: [
+      { id: 'ns-action-1', description: 'Reallocate spend toward high-intent paid search campaigns', dueDate: '2026-08-07', completed: true },
+      { id: 'ns-action-2', description: 'Confirm approval-rule changes with Pioneer Bank and BPI', dueDate: '2026-08-08', completed: true },
+      { id: 'ns-action-3', description: 'Scale CRM retargeting for eligible but unapproved users', dueDate: '2026-08-16', completed: true },
+      { id: 'ns-action-4', description: 'Prepare week-ending recovery readout for executive review', dueDate: '2026-08-24', completed: false },
+    ],
+    targetDate: '2026-08-31',
+    confidenceLevel: 'medium',
+    previousPlanIds: [],
+    source: 'dashboard',
+    aiSuggestion: 'Protect volume recovery, but do not add spend to channels where approval quality is still below target.',
+  },
+]
+
+export const mockAccountabilityEvents: AccountabilityEvent[] = [
+  {
+    id: 'evt-northstar-001',
+    kpiId: 'kpi-ns-revenue-forecast',
+    triggeredAt: '2026-08-04T09:00:00Z',
+    type: 'miss',
+    actorId: 'system',
+    actorName: 'KPI OS',
+    actorRole: 'viewer',
+    message: 'Revenue forecast moved below plan after traffic softened at the start of August.',
+    source: 'system',
+    metadata: { section: 'Executive Forecast' },
+  },
+  {
+    id: 'evt-northstar-002',
+    kpiId: 'kpi-ns-approval-rate',
+    triggeredAt: '2026-08-07T09:00:00Z',
+    type: 'escalation',
+    actorId: 'system',
+    actorName: 'KPI OS',
+    actorRole: 'viewer',
+    message: 'Approval rates declined for selected bank partners. Commercial Partnerships should confirm underwriting or eligibility changes.',
+    source: 'system',
+  },
+  {
+    id: 'evt-northstar-003',
+    kpiId: 'kpi-ns-cross-sell-rate',
+    triggeredAt: '2026-08-14T09:00:00Z',
+    type: 'check-in',
+    actorId: 'user-crm',
+    actorName: 'Riley Chen',
+    actorRole: 'brand',
+    message: 'Cross-sell and repeat product adoption continue to improve versus June. CRM journeys are ready to scale.',
+    source: 'dashboard',
+  },
+]
